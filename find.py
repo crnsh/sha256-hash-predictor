@@ -12,7 +12,6 @@ def get_hash_string(message: str):
 def append_permutation(initial_message: str, permutation: tuple[str]):
     
     output = initial_message
-    
     last_digit = permutation[-1]
     
     for digit in permutation[:-1]:
@@ -24,14 +23,12 @@ def append_permutation(initial_message: str, permutation: tuple[str]):
 def find_message(n: int):
 
     hex_digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f']
-
     initial_message = "The SHA256 hash for this message starts with : "
     answer = ""
     
     for permutation in list(product(hex_digits, repeat=n)):
         
         complete_message = append_permutation(initial_message, permutation)
-        
         complete_message_hash = get_hash_string(complete_message)
         
         if (complete_message_hash[:n] == (''.join(permutation))[:n]):
