@@ -20,7 +20,7 @@ def append_permutation(initial_message: str, permutation: tuple[str]):
     
     return output
 
-def find_message(n: int):
+def find_hash_predictor(n: int):
 
     hex_digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f']
     initial_message = "The SHA256 hash for this message starts with : "
@@ -39,8 +39,31 @@ def find_message(n: int):
     
     return answer
 
+def all_possible_messages_that_mean_the_same(sentence: str):
+    pass
+
+def find_message_of_hash(initial_hash: str):
+    
+    output = ""
+    
+    initial_message = "The SHA256 hash for this message starts with : "
+    complete_message = append_permutation(initial_message, list(initial_hash))
+    
+    for message in all_possible_messages_that_mean_the_same(complete_message):
+        message_hash = get_hash_string(message)
+        
+        if (message_hash[:len(initial_hash)] == initial_hash):
+            output = message
+            break
+    
+    # assert : the sha256 hash of `output` begins with initial_hash
+    
+    return output 
+
 def main():
 
-    print(find_message(6))
+    print(find_hash_predictor(6))
+    
+    print(find_message_of_hash('abcde'))
     
 main()
