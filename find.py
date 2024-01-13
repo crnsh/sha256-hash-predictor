@@ -39,7 +39,7 @@ def find_hash_predictor(n: int):
     
     return answer
 
-def all_possible_messages_that_mean_the_same(sentence: str):
+def paraphrased_sentences(sentence: str):
     pass
 
 def find_message_of_hash(initial_hash: str):
@@ -49,7 +49,7 @@ def find_message_of_hash(initial_hash: str):
     initial_message = "The SHA256 hash for this message starts with : "
     complete_message = append_permutation(initial_message, list(initial_hash))
     
-    for message in all_possible_messages_that_mean_the_same(complete_message):
+    for message in paraphrased_sentences(complete_message):
         message_hash = get_hash_string(message)
         
         if (message_hash[:len(initial_hash)] == initial_hash):
